@@ -7,11 +7,11 @@ import ${superServiceImplClassPackage};
 import org.springframework.stereotype.Service;
 
 /**
-* ${table.comment!} 服务实现类
-*
-* @author ${author}
-* @date ${date} ${time}
-*/
+ * ${table.comment!} 服务实现类
+ *
+ * @author ${author}
+ * @date ${date} ${time}
+ */
 @Service
 public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
 

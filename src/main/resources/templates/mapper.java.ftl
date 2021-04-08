@@ -4,15 +4,15 @@ import ${package.Entity}.${entity};
 import ${superMapperClassPackage};
 
 /**
-* ${table.comment!} Mapper 接口
-*
-* @author ${author}
-*  @date ${date} ${time}
-*/
+ * ${table.comment!} Mapper 接口
+ *
+ * @author ${author}
+ * @date ${date} ${time}
+ */
 <#if kotlin>
-    interface ${table.mapperName} : ${superMapperClass}<${entity}>
+interface ${table.mapperName} : ${superMapperClass}<${entity}>
 <#else>
-    public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
+public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
 
-    }
+}
 </#if>

@@ -5,6 +5,7 @@ import caojx.learn.mybatisgeneratorplus.generator.CodeGenerator;
 import caojx.learn.mybatisgeneratorplus.generator.mybatisplus.config.MyBatisPlusGeneratorConfig;
 import caojx.learn.mybatisgeneratorplus.generator.mybatisplus.engine.SimpleFreemarkerTemplateEngine;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,12 +13,13 @@ import org.springframework.stereotype.Component;
  *
  * @author caojx created on 2021/4/2 10:13 下午
  */
+@Slf4j
 @Component
 public class MyBatisPlusCodeGenerator implements CodeGenerator {
 
     @Override
     public void generate() {
-        System.out.println("--------------------start MyBatisPlusCodeGenerator-------------------");
+        log.info("--------------------start MyBatisPlusCodeGenerator-------------------");
 
         MyBatisPlusGeneratorConfig generatorConfig = BeanUtil.getBean(MyBatisPlusGeneratorConfig.class);
         // 代码生成器
@@ -34,6 +36,6 @@ public class MyBatisPlusCodeGenerator implements CodeGenerator {
         mpg.setTemplateEngine(new SimpleFreemarkerTemplateEngine());
 
         mpg.execute();
-        System.out.println("--------------------start MyBatisPlusCodeGenerator-------------------");
+        log.info("--------------------start MyBatisPlusCodeGenerator-------------------");
     }
 }

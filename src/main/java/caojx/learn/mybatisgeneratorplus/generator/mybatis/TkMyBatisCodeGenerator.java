@@ -1,6 +1,7 @@
 package caojx.learn.mybatisgeneratorplus.generator.mybatis;
 
 import caojx.learn.mybatisgeneratorplus.generator.CodeGenerator;
+import lombok.extern.slf4j.Slf4j;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
@@ -15,22 +16,23 @@ import java.util.List;
  *
  * @author caojx created on 2021/4/2 10:13 下午
  */
+@Slf4j
 @Component
 public class TkMyBatisCodeGenerator implements CodeGenerator {
 
     @Override
     public void generate() {
         try {
-            System.out.println("--------------------start TkMyBatisCodeGenerator-------------------");
-            List<String> warnings = new ArrayList<String>();
+            log.info("--------------------start TkMyBatisCodeGenerator-------------------");
+            List<String> warnings = new ArrayList();
             ConfigurationParser cp = new ConfigurationParser(warnings);
             Configuration config = cp.parseConfiguration(Thread.currentThread().getContextClassLoader().getResourceAsStream("generator/generatorConfig-tkmybatis.xml"));
             DefaultShellCallback callback = new DefaultShellCallback(true);
             MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
             myBatisGenerator.generate(null);
-            System.out.println("--------------------end TkMyBatisCodeGenerator-------------------");
+            log.info("--------------------end TkMyBatisCodeGenerator-------------------");
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("TkMyBatisCodeGenerator error", e);
         }
     }
 }

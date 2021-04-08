@@ -4,6 +4,7 @@ import caojx.learn.mybatisgeneratorplus.common.properties.GeneratorCodePropertie
 import caojx.learn.mybatisgeneratorplus.common.utils.BeanUtil;
 import caojx.learn.mybatisgeneratorplus.generator.mybatis.constants.Constant;
 import caojx.learn.mybatisgeneratorplus.generator.mybatis.engin.SimpleFreemarkerTemplateEngine;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
@@ -22,6 +23,7 @@ import java.util.regex.Pattern;
  *
  * @author caojx created on 2021/4/8 9:42 上午
  */
+@Slf4j
 public class GeneratorCommonMethod {
 
     private Pattern mapperPattern = Pattern.compile("Mapper$");
@@ -47,7 +49,7 @@ public class GeneratorCommonMethod {
             String controllerFile = getFileAbsolutePath(objectMap, Constant.CONTROLLER_PACKAGE_NAME, "controllerName");
             freemarkerTemplateEngine.writer(objectMap, Constant.CONTROLLER_TEMPLATE_PATH, controllerFile);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("generateControllerFile error", e);
         }
     }
 
@@ -61,7 +63,7 @@ public class GeneratorCommonMethod {
             String serviceFile = getFileAbsolutePath(objectMap, Constant.SERVICE_PACKAGE_NAME, "serviceName");
             freemarkerTemplateEngine.writer(objectMap, Constant.SERVICE_TEMPLATE_PATH, serviceFile);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("generateServiceFile error", e);
         }
 
     }
@@ -76,7 +78,7 @@ public class GeneratorCommonMethod {
             String serviceImplFile = getFileAbsolutePath(objectMap, Constant.SERVICE_IMPL_PACKAGE_NAME, "serviceImplName");
             freemarkerTemplateEngine.writer(objectMap, Constant.SERVICE_IMPL_TEMPLATE_PATH, serviceImplFile);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("generateServiceImplFile error", e);
         }
     }
 

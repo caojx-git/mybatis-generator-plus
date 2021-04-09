@@ -1,5 +1,6 @@
 package caojx.learn.mybatisgeneratorplus.generator.mybatisplus.engine;
 
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
@@ -23,6 +24,7 @@ public class SimpleFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
     @Override
     public Map<String, Object> getObjectMap(TableInfo tableInfo) {
         Map<String, Object> objectMap = super.getObjectMap(tableInfo);
+        objectMap.put("controllerMappingHyphen", StringUtils.camelToHyphen(StringUtils.underlineToCamel(tableInfo.getName())));
         objectMap.put("time", new SimpleDateFormat("h:mm a").format(new Date()));
         return objectMap;
     }

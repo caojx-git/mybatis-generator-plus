@@ -79,7 +79,9 @@ public class SimpleFreemarkerTemplateEngine {
 
         objectMap.put("superServiceImplClassPackage", Constant.SUPER_SERVICE_IMPL_CLASS);
         objectMap.put("superServiceImplClass", Constant.SUPER_SERVICE_IMPL_NAME);
-        objectMap.put("controllerMappingHyphen", CommonUtil.camelToHyphen(entityName));
+
+        String originalEntityName = CommonUtil.underlineToCamel(introspectedTable.getFullyQualifiedTable().getIntrospectedTableName());
+        objectMap.put("controllerMappingHyphen", CommonUtil.camelToHyphen(originalEntityName));
         return objectMap;
     }
 

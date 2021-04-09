@@ -76,11 +76,11 @@ public class TkMybatisPlugin extends tk.mybatis.mapper.generator.MapperPlugin {
         // 模板参数
         Map<String, Object> objectMap = freemarkerTemplateEngine.getObjectMap(introspectedTable);
         // 生成service
-        generatorCommonMethod.generateServiceFile(objectMap);
+        generatorCommonMethod.serviceGenerated(objectMap);
         // 生成 serviceImpl
-        generatorCommonMethod.generateServiceImplFile(objectMap);
+        generatorCommonMethod.serviceImplGenerated(objectMap);
         // 生成 Controller
-        generatorCommonMethod.generateControllerFile(objectMap);
+        generatorCommonMethod.controllerGenerated(objectMap);
         return true;
     }
 }

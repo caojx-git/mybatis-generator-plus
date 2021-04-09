@@ -44,12 +44,12 @@ public class GeneratorCommonMethod {
      *
      * @param objectMap 模板参数
      */
-    public void generateControllerFile(Map<String, Object> objectMap) {
+    public void controllerGenerated(Map<String, Object> objectMap) {
         try {
             String controllerFile = getFileAbsolutePath(objectMap, Constant.CONTROLLER_PACKAGE_NAME, "controllerName");
             freemarkerTemplateEngine.writer(objectMap, Constant.CONTROLLER_TEMPLATE_PATH, controllerFile);
         } catch (Exception e) {
-            log.error("generateControllerFile error", e);
+            log.error("controllerGenerated error", e);
         }
     }
 
@@ -58,12 +58,12 @@ public class GeneratorCommonMethod {
      *
      * @param objectMap 模板参数
      */
-    public void generateServiceFile(Map<String, Object> objectMap) {
+    public void serviceGenerated(Map<String, Object> objectMap) {
         try {
             String serviceFile = getFileAbsolutePath(objectMap, Constant.SERVICE_PACKAGE_NAME, "serviceName");
             freemarkerTemplateEngine.writer(objectMap, Constant.SERVICE_TEMPLATE_PATH, serviceFile);
         } catch (Exception e) {
-            log.error("generateServiceFile error", e);
+            log.error("serviceGenerated error", e);
         }
 
     }
@@ -73,12 +73,12 @@ public class GeneratorCommonMethod {
      *
      * @param objectMap 模板参数
      */
-    public void generateServiceImplFile(Map<String, Object> objectMap) {
+    public void serviceImplGenerated(Map<String, Object> objectMap) {
         try {
             String serviceImplFile = getFileAbsolutePath(objectMap, Constant.SERVICE_IMPL_PACKAGE_NAME, "serviceImplName");
             freemarkerTemplateEngine.writer(objectMap, Constant.SERVICE_IMPL_TEMPLATE_PATH, serviceImplFile);
         } catch (Exception e) {
-            log.error("generateServiceImplFile error", e);
+            log.error("serviceImplGenerated error", e);
         }
     }
 

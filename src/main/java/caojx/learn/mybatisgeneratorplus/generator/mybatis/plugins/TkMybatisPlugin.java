@@ -11,6 +11,7 @@ import org.mybatis.generator.api.dom.java.TopLevelClass;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * TkMapper 插件
@@ -47,12 +48,17 @@ public class TkMybatisPlugin extends tk.mybatis.mapper.generator.MapperPlugin {
     }
 
     @Override
+    public void setProperties(Properties properties) {
+        this.properties.putAll(properties);
+    }
+
+    @Override
     public boolean clientGenerated(Interface interfaze, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         // Mapper接口添加注释生成
         generatorCommonMethod.addMapperClassComment(interfaze, introspectedTable);
         // Mapper接口是否有必要添加参数化类型
         generatorCommonMethod.addMapperTypeArgumentIfNecessary(interfaze, introspectedTable);
-        return super.clientGenerated(interfaze, topLevelClass, introspectedTable);
+        return true;
     }
 
     @Override

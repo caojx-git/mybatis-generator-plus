@@ -72,23 +72,23 @@ public class MyBatisPlusGeneratorConfig {
         globalConfig.setDateType(DateType.ONLY_DATE);
 
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
-        if (StringUtils.isNotBlank(generatorCodeProperties.getEntityName())) {
-            globalConfig.setEntityName(generatorCodeProperties.getEntityName());
+        if (StringUtils.isNotBlank(generatorCodeProperties.getEntityNameFormat())) {
+            globalConfig.setEntityName(generatorCodeProperties.getEntityNameFormat());
         }
-        if (StringUtils.isNotBlank(generatorCodeProperties.getMapperName())) {
-            globalConfig.setMapperName(generatorCodeProperties.getMapperName());
+        if (StringUtils.isNotBlank(generatorCodeProperties.getMapperNameFormat())) {
+            globalConfig.setMapperName(generatorCodeProperties.getMapperNameFormat());
         }
-        if (StringUtils.isNotBlank(generatorCodeProperties.getXmlName())) {
-            globalConfig.setXmlName(generatorCodeProperties.getXmlName());
+        if (StringUtils.isNotBlank(generatorCodeProperties.getXmlNameFormat())) {
+            globalConfig.setXmlName(generatorCodeProperties.getXmlNameFormat());
         }
-        if (StringUtils.isNotBlank(generatorCodeProperties.getServiceName())) {
-            globalConfig.setServiceName(generatorCodeProperties.getServiceName());
+        if (StringUtils.isNotBlank(generatorCodeProperties.getServiceNameFormat())) {
+            globalConfig.setServiceName(generatorCodeProperties.getServiceNameFormat());
         }
-        if (StringUtils.isNotBlank(generatorCodeProperties.getServiceImplName())) {
-            globalConfig.setServiceImplName(generatorCodeProperties.getServiceImplName());
+        if (StringUtils.isNotBlank(generatorCodeProperties.getServiceImplNameFormat())) {
+            globalConfig.setServiceImplName(generatorCodeProperties.getServiceImplNameFormat());
         }
-        if (StringUtils.isNotBlank(generatorCodeProperties.getControllerName())) {
-            globalConfig.setControllerName(generatorCodeProperties.getControllerName());
+        if (StringUtils.isNotBlank(generatorCodeProperties.getControllerNameFormat())) {
+            globalConfig.setControllerName(generatorCodeProperties.getControllerNameFormat());
         }
 
         // 启用BaseColumnList
@@ -113,7 +113,19 @@ public class MyBatisPlusGeneratorConfig {
     public PackageConfig getPackageConfig() {
         PackageConfig packageConfig = new PackageConfig();
         // 父包名
-        packageConfig.setParent(generatorCodeProperties.getParent());
+        packageConfig.setParent("");
+        // 实体包名
+        packageConfig.setEntity(generatorCodeProperties.getEntityPackageName());
+        // 实体Mapper包名
+        packageConfig.setMapper(generatorCodeProperties.getMapperPackageName());
+        // xml路径名
+        packageConfig.setXml(generatorCodeProperties.getMapperXmlPackageName());
+        // service包名
+        packageConfig.setService(generatorCodeProperties.getServicePackageName());
+        // serviceImpl包名
+        packageConfig.setServiceImpl(generatorCodeProperties.getServiceImplPackageName());
+        // controller 包名
+        packageConfig.setController(generatorCodeProperties.getControllerPackageName());
         return packageConfig;
     }
 
@@ -146,6 +158,16 @@ public class MyBatisPlusGeneratorConfig {
         // Mapper公共父类
         if (StringUtils.isNotBlank(generatorCodeProperties.getSuperMapperClass())) {
             strategyConfig.setSuperMapperClass(generatorCodeProperties.getSuperMapperClass());
+        }
+
+        // service接口父类
+        if(StringUtils.isNotBlank(generatorCodeProperties.getSuperServiceClass())){
+            strategyConfig.setSuperServiceClass(generatorCodeProperties.getSuperServiceClass());
+        }
+
+        // service实现类父类
+        if(StringUtils.isNotBlank(generatorCodeProperties.getSuperServiceImplClass())){
+            strategyConfig.setSuperServiceImplClass(generatorCodeProperties.getSuperServiceImplClass());
         }
 
         return strategyConfig;

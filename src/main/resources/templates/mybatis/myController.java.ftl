@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date ${date} ${time}
  */
 @RestController
-@RequestMapping("${controllerMappingHyphen}")
+@RequestMapping("/${controllerMappingHyphen}")
 public class ${table.controllerName} {
 
 }

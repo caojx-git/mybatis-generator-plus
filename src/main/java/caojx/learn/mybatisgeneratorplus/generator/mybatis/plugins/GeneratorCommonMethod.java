@@ -46,7 +46,7 @@ public class GeneratorCommonMethod {
      */
     public void controllerGenerated(Map<String, Object> objectMap) {
         try {
-            String controllerFile = getFileAbsolutePath(objectMap, Constant.CONTROLLER_PACKAGE_NAME, "controllerName");
+            String controllerFile = getFileAbsolutePath(objectMap, generatorCodeProperties.getControllerPackageName(), "controllerName");
             freemarkerTemplateEngine.writer(objectMap, Constant.CONTROLLER_TEMPLATE_PATH, controllerFile);
         } catch (Exception e) {
             log.error("controllerGenerated error", e);
@@ -60,7 +60,7 @@ public class GeneratorCommonMethod {
      */
     public void serviceGenerated(Map<String, Object> objectMap) {
         try {
-            String serviceFile = getFileAbsolutePath(objectMap, Constant.SERVICE_PACKAGE_NAME, "serviceName");
+            String serviceFile = getFileAbsolutePath(objectMap, generatorCodeProperties.getServicePackageName(), "serviceName");
             freemarkerTemplateEngine.writer(objectMap, Constant.SERVICE_TEMPLATE_PATH, serviceFile);
         } catch (Exception e) {
             log.error("serviceGenerated error", e);
@@ -75,7 +75,7 @@ public class GeneratorCommonMethod {
      */
     public void serviceImplGenerated(Map<String, Object> objectMap) {
         try {
-            String serviceImplFile = getFileAbsolutePath(objectMap, Constant.SERVICE_IMPL_PACKAGE_NAME, "serviceImplName");
+            String serviceImplFile = getFileAbsolutePath(objectMap, generatorCodeProperties.getServiceImplPackageName(), "serviceImplName");
             freemarkerTemplateEngine.writer(objectMap, Constant.SERVICE_IMPL_TEMPLATE_PATH, serviceImplFile);
         } catch (Exception e) {
             log.error("serviceImplGenerated error", e);
@@ -85,19 +85,17 @@ public class GeneratorCommonMethod {
     /**
      * 获取文件绝对路径
      *
-     * @param objectMap      模板参数
-     * @param subPackageName 子包名称
-     * @param fileNameParam  文件参数名
+     * @param objectMap     模板参数
+     * @param packageName   包名称
+     * @param fileNameParam 文件参数名
      * @return 文件绝对路径
      */
-    private String getFileAbsolutePath(Map<String, Object> objectMap, String subPackageName, String fileNameParam) {
+    private String getFileAbsolutePath(Map<String, Object> objectMap, String packageName, String fileNameParam) {
         // 文件生成路径
         StringBuilder directoryPath = new StringBuilder();
         directoryPath.append(generatorCodeProperties.getOutputDir());
         directoryPath.append(File.separator);
-        directoryPath.append(generatorCodeProperties.getParent().replaceAll("\\.", File.separator));
-        directoryPath.append(File.separator);
-        directoryPath.append(subPackageName.replaceAll("\\.", File.separator));
+        directoryPath.append(packageName.replaceAll("\\.", File.separator));
         directoryPath.append(File.separator);
 
         // 目录不存在则创建目录
@@ -123,11 +121,11 @@ public class GeneratorCommonMethod {
      * @param introspectedTable
      */
     public void renameEntityIfNecessary(IntrospectedTable introspectedTable) {
-        if (StringUtils.isNotBlank(this.generatorCodeProperties.getEntityName())) {
+        if (StringUtils.isNotBlank(this.generatorCodeProperties.getEntityNameFormat())) {
             String oldType = introspectedTable.getBaseRecordType();
 
             // 拼接新的后缀名
-            oldType = String.format(this.generatorCodeProperties.getEntityName(), oldType);
+            oldType = String.format(this.generatorCodeProperties.getEntityNameFormat(), oldType);
 
             introspectedTable.setBaseRecordType(oldType);
         }
@@ -139,7 +137,7 @@ public class GeneratorCommonMethod {
      * @param introspectedTable
      */
     public void renameMapperIfNecessary(IntrospectedTable introspectedTable) {
-        if (StringUtils.isNotBlank(this.generatorCodeProperties.getMapperName())) {
+        if (StringUtils.isNotBlank(this.generatorCodeProperties.getMapperNameFormat())) {
             String oldType = introspectedTable.getMyBatis3JavaMapperType();
 
             // 清理原有的后缀名
@@ -147,7 +145,7 @@ public class GeneratorCommonMethod {
             oldType = matcher.replaceAll("");
 
             // 拼接新的后缀名
-            oldType = String.format(this.generatorCodeProperties.getMapperName(), oldType);
+            oldType = String.format(this.generatorCodeProperties.getMapperNameFormat(), oldType);
 
             introspectedTable.setMyBatis3JavaMapperType(oldType);
         }
@@ -159,7 +157,7 @@ public class GeneratorCommonMethod {
      * @param introspectedTable
      */
     public void renameXmlIfNecessary(IntrospectedTable introspectedTable) {
-        if (StringUtils.isNotBlank(this.generatorCodeProperties.getXmlName())) {
+        if (StringUtils.isNotBlank(this.generatorCodeProperties.getXmlNameFormat())) {
             String oldType = introspectedTable.getMyBatis3XmlMapperFileName();
 
             // 清理原有的后缀名
@@ -167,7 +165,7 @@ public class GeneratorCommonMethod {
             oldType = matcher.replaceAll("");
 
             // 拼接新的后缀名
-            oldType = String.format(this.generatorCodeProperties.getXmlName() + Constant.XML_SUFFIX, oldType);
+            oldType = String.format(this.generatorCodeProperties.getXmlNameFormat() + Constant.XML_SUFFIX, oldType);
 
             introspectedTable.setMyBatis3XmlMapperFileName(oldType);
         }

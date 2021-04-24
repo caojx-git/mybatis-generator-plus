@@ -38,47 +38,62 @@ public interface Constant {
     String CONTROLLER_TEMPLATE_PATH = "/templates/mybatis/myController.java.ftl";
 
     /**
-     * Entity包名
+     * 实体 默认包名
      */
-    String ENTITY_PACKAGE_NAME = "entity";
+    String ENTITY_PACKAGE_DEFAULT_NAME = "com.generator.test.entity";
 
     /**
-     * Service包名
+     * mapper 默认包名
      */
-    String SERVICE_PACKAGE_NAME = "service";
+    String MAPPER_PACKAGE_DEFAULT_NAME = "com.generator.test.mapper";
 
     /**
-     * Service Impl包名
+     * mapper.xml 默认包名
      */
-    String SERVICE_IMPL_PACKAGE_NAME = "service.impl";
+    String MAPPER_XML_PACKAGE_DEFAULT_NAME = "com.generator.test.mapper.xml";
 
     /**
-     * Mapper包名
+     * service 默认包名
      */
-    String MAPPER_PACKAGE_NAME = "mapper";
+    String SERVICE_PACKAGE_DEFAULT_NAME = "com.generator.test.service";
 
     /**
-     * Controller包名
+     * serviceImpl 默认包名
      */
-    String CONTROLLER_PACKAGE_NAME = "controller";
+    String SERVICE_IMPL_PACKAGE_DEFAULT_NAME = "com.generator.test.service.impl";
 
     /**
-     * service 公共接口名称
+     * controller 默认包名
      */
-    String SUPER_SERVICE_NAME = "IService";
+    String CONTROLLER_PACKAGE_DEFAULT_NAME = "com.generator.test.controller";
 
     /**
-     * service 公共实现类名称
+     * 实体默认文件名格式，注意 %s 会自动填充表原始实体名称
      */
-    String SUPER_SERVICE_IMPL_NAME = "ServiceImpl";
+    String ENTITY_NAME_DEFAULT_FORMAT = "%s";
 
     /**
-     * service 公共接口
+     * mapper默认文件名格式，注意 %s 会自动填充表原始实体名称
      */
-    String SUPER_SERVICE_CLASS = "caojx.learn.mybatisgeneratorplus.generator.mybatis.IService";
+    String MAPPER_NAME_DEFAULT_FORMAT = "%sMapper";
 
     /**
-     * service 公共实现类
+     * mapper.xml默认文件名格式，注意 %s 会自动填充表原始实体名称
      */
-    String SUPER_SERVICE_IMPL_CLASS = "caojx.learn.mybatisgeneratorplus.generator.mybatis.ServiceImpl";
+    String XML_NAME_DEFAULT_FORMAT = "%sMapper";
+
+    /**
+     * service默认文件名格式，注意 %s 会自动填充表原始实体名称
+     */
+    String SERVICE_NAME_DEFAULT_FORMAT = "I%sService";
+
+    /**
+     * serviceImpl默认文件名格式，注意 %s 会自动填充表原始实体名称
+     */
+    String SERVICE_IMPL_NAME_DEFAULT_FORMAT = "%sServiceImpl";
+
+    /**
+     * controller默认文件名格式，注意 %s 会自动填充表原始实体名称
+     */
+    String CONTROLLER_NAME_DEFAULT_FORMAT = "%sController";
 }

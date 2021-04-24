@@ -74,11 +74,11 @@ public class SimpleFreemarkerTemplateEngine {
 
         objectMap.put("superMapperClassPackage", GENERATOR_CODE_PROPERTIES.getSuperMapperClass());
         objectMap.put("superMapperClass", GENERATOR_CODE_PROPERTIES.getSuperMapperClass());
-        objectMap.put("superServiceClassPackage", Constant.SUPER_SERVICE_CLASS);
-        objectMap.put("superServiceClass", Constant.SUPER_SERVICE_NAME);
+        objectMap.put("superServiceClassPackage", GENERATOR_CODE_PROPERTIES.getSuperServiceClass());
+        objectMap.put("superServiceClass", CommonUtil.getSimpleClassName(GENERATOR_CODE_PROPERTIES.getSuperServiceClass()));
 
-        objectMap.put("superServiceImplClassPackage", Constant.SUPER_SERVICE_IMPL_CLASS);
-        objectMap.put("superServiceImplClass", Constant.SUPER_SERVICE_IMPL_NAME);
+        objectMap.put("superServiceImplClassPackage", GENERATOR_CODE_PROPERTIES.getSuperServiceImplClass());
+        objectMap.put("superServiceImplClass", CommonUtil.getSimpleClassName(GENERATOR_CODE_PROPERTIES.getSuperServiceImplClass()));
 
         String originalEntityName = CommonUtil.underlineToCamel(introspectedTable.getFullyQualifiedTable().getIntrospectedTableName());
         objectMap.put("controllerMappingHyphen", CommonUtil.camelToHyphen(originalEntityName));
@@ -92,12 +92,11 @@ public class SimpleFreemarkerTemplateEngine {
      */
     private Map<String, Object> getPackageInfo() {
         Map<String, Object> packageInfo = CollectionUtils.newHashMapWithExpectedSize(7);
-        packageInfo.put("ModuleName", GENERATOR_CODE_PROPERTIES.getParent());
-        packageInfo.put("Entity", CommonUtil.joinPackage(GENERATOR_CODE_PROPERTIES.getParent(), Constant.ENTITY_PACKAGE_NAME));
-        packageInfo.put("Mapper", CommonUtil.joinPackage(GENERATOR_CODE_PROPERTIES.getParent(), Constant.MAPPER_PACKAGE_NAME));
-        packageInfo.put("Service", CommonUtil.joinPackage(GENERATOR_CODE_PROPERTIES.getParent(), Constant.SERVICE_PACKAGE_NAME));
-        packageInfo.put("ServiceImpl", CommonUtil.joinPackage(GENERATOR_CODE_PROPERTIES.getParent(), Constant.SERVICE_IMPL_PACKAGE_NAME));
-        packageInfo.put("Controller", CommonUtil.joinPackage(GENERATOR_CODE_PROPERTIES.getParent(), Constant.CONTROLLER_PACKAGE_NAME));
+        packageInfo.put("Entity", GENERATOR_CODE_PROPERTIES.getEntityPackageName());
+        packageInfo.put("Mapper", GENERATOR_CODE_PROPERTIES.getMapperPackageName());
+        packageInfo.put("Service", GENERATOR_CODE_PROPERTIES.getServicePackageName());
+        packageInfo.put("ServiceImpl", GENERATOR_CODE_PROPERTIES.getServiceImplPackageName());
+        packageInfo.put("Controller", GENERATOR_CODE_PROPERTIES.getControllerPackageName());
         return packageInfo;
     }
 
@@ -113,10 +112,10 @@ public class SimpleFreemarkerTemplateEngine {
 
         String originalEntityName = CommonUtil.underlineToCamel(introspectedTable.getFullyQualifiedTable().getIntrospectedTableName());
 
-        packageInfo.put("mapperName", CommonUtil.convertFileName(GENERATOR_CODE_PROPERTIES.getMapperName(), originalEntityName));
-        packageInfo.put("serviceName", CommonUtil.convertFileName(GENERATOR_CODE_PROPERTIES.getServiceName(), originalEntityName));
-        packageInfo.put("serviceImplName", CommonUtil.convertFileName(GENERATOR_CODE_PROPERTIES.getServiceImplName(), originalEntityName));
-        packageInfo.put("controllerName", CommonUtil.convertFileName(GENERATOR_CODE_PROPERTIES.getControllerName(), originalEntityName));
+        packageInfo.put("mapperName", CommonUtil.convertFileName(GENERATOR_CODE_PROPERTIES.getMapperNameFormat(), originalEntityName));
+        packageInfo.put("serviceName", CommonUtil.convertFileName(GENERATOR_CODE_PROPERTIES.getServiceNameFormat(), originalEntityName));
+        packageInfo.put("serviceImplName", CommonUtil.convertFileName(GENERATOR_CODE_PROPERTIES.getServiceImplNameFormat(), originalEntityName));
+        packageInfo.put("controllerName", CommonUtil.convertFileName(GENERATOR_CODE_PROPERTIES.getControllerNameFormat(), originalEntityName));
         return packageInfo;
     }
 }

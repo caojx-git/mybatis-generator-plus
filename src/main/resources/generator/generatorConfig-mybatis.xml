@@ -46,11 +46,11 @@
             targetPackage     指定生成的model生成所在的包名
             targetProject     指定在该项目下所在的路径
        -->
-        <javaModelGenerator targetPackage="${generator.code.parent}.entity"
+        <javaModelGenerator targetPackage="${generator.code.entityPackageName}"
                             targetProject="${generator.code.outputDir}"/>
 
         <!--Mapper.xml映射文件的包名和位置 -->
-        <sqlMapGenerator targetPackage="${generator.code.parent}.mapper.xml"
+        <sqlMapGenerator targetPackage="${generator.code.mapperXmlPackageName}"
                          targetProject="${generator.code.outputDir}"/>
 
         <!--Mapper.java文件的包名和位置
@@ -60,7 +60,7 @@
 
             这里使用自定义的客户端生成器
         -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="${generator.code.parent}.mapper"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${generator.code.mapperPackageName}"
                              targetProject="${generator.code.outputDir}">
             <!--            <property name="rootInterface" value="${generator.code.superMapperClass}" />-->
         </javaClientGenerator>

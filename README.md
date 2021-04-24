@@ -22,6 +22,7 @@ spring.datasource.username=root
 spring.datasource.password=root
 
 # 相关配置属性请参考 caojx.learn.mybatisgeneratorplus.common.properties.GeneratorCodeProperties
+# 配置说明见 README.md
 generator.code.type=MyBatis
 generator.code.author=caojx
 generator.code.outputDir=/Users/caojx/Desktop/mybatis-generator-plus/src/main/java

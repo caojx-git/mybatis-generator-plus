@@ -1,7 +1,7 @@
 package caojx.learn.mybatisgeneratorplus.common.properties;
 
+import caojx.learn.mybatisgeneratorplus.common.constants.Constant;
 import caojx.learn.mybatisgeneratorplus.common.enums.CodeGeneratorTypeEnum;
-import caojx.learn.mybatisgeneratorplus.generator.mybatis.constants.Constant;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

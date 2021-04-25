@@ -1,4 +1,4 @@
-package caojx.learn.mybatisgeneratorplus.generator.mybatis.constants;
+package caojx.learn.mybatisgeneratorplus.common.constants;
 
 /**
  * 常量类

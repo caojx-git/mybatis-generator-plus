@@ -1,8 +1,8 @@
 package caojx.learn.mybatisgeneratorplus.generator.mybatis.plugins;
 
+import caojx.learn.mybatisgeneratorplus.common.constants.Constant;
 import caojx.learn.mybatisgeneratorplus.common.properties.GeneratorCodeProperties;
 import caojx.learn.mybatisgeneratorplus.common.utils.BeanUtil;
-import caojx.learn.mybatisgeneratorplus.generator.mybatis.constants.Constant;
 import caojx.learn.mybatisgeneratorplus.generator.mybatis.engin.SimpleFreemarkerTemplateEngine;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

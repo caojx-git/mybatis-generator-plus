@@ -1,9 +1,9 @@
 package caojx.learn.mybatisgeneratorplus.generator.mybatis.engin;
 
+import caojx.learn.mybatisgeneratorplus.common.constants.Constant;
 import caojx.learn.mybatisgeneratorplus.common.properties.GeneratorCodeProperties;
 import caojx.learn.mybatisgeneratorplus.common.utils.BeanUtil;
 import caojx.learn.mybatisgeneratorplus.common.utils.CommonUtil;
-import caojx.learn.mybatisgeneratorplus.generator.mybatis.constants.Constant;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.generator.config.ConstVal;
 import freemarker.template.Configuration;

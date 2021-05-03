@@ -99,7 +99,7 @@ public class MyBatisPlusGeneratorConfig {
         // 是否打开生成目录
         globalConfig.setOpen(false);
         // 是否生成swagger2注解
-        globalConfig.setSwagger2(false);
+        globalConfig.setSwagger2(generatorCodeProperties.isSwagger2());
 
         return globalConfig;
     }
@@ -161,12 +161,12 @@ public class MyBatisPlusGeneratorConfig {
         }
 
         // service接口父类
-        if(StringUtils.isNotBlank(generatorCodeProperties.getSuperServiceClass())){
+        if (StringUtils.isNotBlank(generatorCodeProperties.getSuperServiceClass())) {
             strategyConfig.setSuperServiceClass(generatorCodeProperties.getSuperServiceClass());
         }
 
         // service实现类父类
-        if(StringUtils.isNotBlank(generatorCodeProperties.getSuperServiceImplClass())){
+        if (StringUtils.isNotBlank(generatorCodeProperties.getSuperServiceImplClass())) {
             strategyConfig.setSuperServiceImplClass(generatorCodeProperties.getSuperServiceImplClass());
         }
 

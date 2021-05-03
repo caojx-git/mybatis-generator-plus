@@ -3,6 +3,7 @@ package caojx.learn.mybatisgeneratorplus.generator.mybatis.plugins;
 import caojx.learn.mybatisgeneratorplus.common.constants.Constant;
 import caojx.learn.mybatisgeneratorplus.common.properties.GeneratorCodeProperties;
 import caojx.learn.mybatisgeneratorplus.common.utils.BeanUtil;
+import caojx.learn.mybatisgeneratorplus.common.utils.CommonUtil;
 import caojx.learn.mybatisgeneratorplus.generator.mybatis.engin.SimpleFreemarkerTemplateEngine;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -200,6 +201,21 @@ public class GeneratorCommonMethod {
     }
 
     /**
+     * 实体是否有必要添加swagger2注解
+     *
+     * @param topLevelClass
+     */
+    public void addSwagger2AnnotationIfNecessary(IntrospectedTable introspectedTable, TopLevelClass topLevelClass) {
+        if (generatorCodeProperties.isSwagger2()) {
+            topLevelClass.addImportedType("io.swagger.annotations.ApiModel");
+            topLevelClass.addImportedType("io.swagger.annotations.ApiModelProperty");
+            String remarks = introspectedTable.getRemarks();
+            String entityName = CommonUtil.getSimpleClassName(introspectedTable.getBaseRecordType());
+            topLevelClass.addAnnotation("@ApiModel(value = \"" + entityName + "对象\", description = \"" + remarks + "\")");
+        }
+    }
+
+    /**
      * 实体是否有必要添加lombok注解
      *
      * @param topLevelClass
@@ -293,13 +309,17 @@ public class GeneratorCommonMethod {
      */
     public void addFieldComment(Field field, IntrospectedColumn introspectedColumn) {
         String remarks = introspectedColumn.getRemarks();
-        if (StringUtils.isNotBlank(remarks)) {
-            StringBuilder sb = new StringBuilder();
-            field.addJavaDocLine("/**");
-            sb.append(" * ");
-            sb.append(remarks);
-            field.addJavaDocLine(sb.toString());
-            field.addJavaDocLine(" */");
+        if (generatorCodeProperties.isSwagger2()) {
+            field.addAnnotation("@ApiModelProperty(value = \"" + remarks + "\")");
+        } else {
+            if (StringUtils.isNotBlank(remarks)) {
+                StringBuilder sb = new StringBuilder();
+                field.addJavaDocLine("/**");
+                sb.append(" * ");
+                sb.append(remarks);
+                field.addJavaDocLine(sb.toString());
+                field.addJavaDocLine(" */");
+            }
         }
     }
 

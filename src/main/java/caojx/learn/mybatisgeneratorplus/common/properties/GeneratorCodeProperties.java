@@ -31,6 +31,11 @@ public class GeneratorCodeProperties {
     private String outputDir;
 
     /**
+     * 是否生成swagger2注解
+     */
+    private boolean swagger2 = Boolean.FALSE;
+
+    /**
      * 实体包名
      */
     private String entityPackageName = Constant.ENTITY_PACKAGE_DEFAULT_NAME;

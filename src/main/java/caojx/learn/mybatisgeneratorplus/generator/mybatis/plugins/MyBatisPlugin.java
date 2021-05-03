@@ -61,6 +61,8 @@ public class MyBatisPlugin extends PluginAdapter {
         generatorCommonMethod.addModelClassComment(topLevelClass, introspectedTable);
         // 实体是否有必要添加lombok注解
         generatorCommonMethod.addLombokAnnotationIfNecessary(topLevelClass);
+        // 实体是否有必要添加swagger2注解
+        generatorCommonMethod.addSwagger2AnnotationIfNecessary(introspectedTable, topLevelClass);
         // 模板参数
         Map<String, Object> objectMap = freemarkerTemplateEngine.getObjectMap(introspectedTable);
         // 生成service

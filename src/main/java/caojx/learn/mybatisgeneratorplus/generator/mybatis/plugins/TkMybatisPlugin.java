@@ -84,6 +84,8 @@ public class TkMybatisPlugin extends tk.mybatis.mapper.generator.MapperPlugin {
         generatorCommonMethod.addModelClassComment(topLevelClass, introspectedTable);
         // 实体是否有必要添加lombok注解
         generatorCommonMethod.addLombokAnnotationIfNecessary(topLevelClass);
+        // 实体是否有必要添加swagger2注解
+        generatorCommonMethod.addSwagger2AnnotationIfNecessary(introspectedTable, topLevelClass);
         // 生成实体
         super.modelBaseRecordClassGenerated(topLevelClass, introspectedTable);
         // 模板参数

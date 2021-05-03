@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.*;
+import org.mybatis.generator.config.Context;
 import org.mybatis.generator.internal.util.StringUtility;
 
 import java.io.File;
@@ -30,6 +31,8 @@ public class GeneratorCommonMethod {
 
     private Pattern xmlPattern = Pattern.compile("Mapper.xml");
 
+    private Pattern targetPackagePattern = Pattern.compile("(^\\$\\{)*(\\}$)");
+
     private GeneratorCodeProperties generatorCodeProperties;
 
     private SimpleFreemarkerTemplateEngine freemarkerTemplateEngine;
@@ -37,6 +40,31 @@ public class GeneratorCommonMethod {
     public GeneratorCommonMethod() {
         this.generatorCodeProperties = BeanUtil.getBean(GeneratorCodeProperties.class);
         this.freemarkerTemplateEngine = new SimpleFreemarkerTemplateEngine();
+    }
+
+    /**
+     * 设置context
+     *
+     * @param context
+     */
+    public void setContextIfNecessary(Context context) {
+        // 实体默认包名
+        String javaModelTargetPackage = context.getJavaModelGeneratorConfiguration().getTargetPackage();
+        if (targetPackagePattern.matcher(javaModelTargetPackage).find() || StringUtils.isBlank(javaModelTargetPackage)) {
+            context.getJavaModelGeneratorConfiguration().setTargetPackage(generatorCodeProperties.getEntityPackageName());
+        }
+
+        // mapper默认包名
+        String javaClientTargetPackage = context.getJavaClientGeneratorConfiguration().getTargetPackage();
+        if (targetPackagePattern.matcher(javaClientTargetPackage).find() || StringUtils.isBlank(javaClientTargetPackage)) {
+            context.getJavaClientGeneratorConfiguration().setTargetPackage(generatorCodeProperties.getMapperPackageName());
+        }
+
+        // mapper.xml默认包名
+        String sqlMapTargetPackage = context.getSqlMapGeneratorConfiguration().getTargetPackage();
+        if (targetPackagePattern.matcher(sqlMapTargetPackage).find() || StringUtils.isBlank(sqlMapTargetPackage)) {
+            context.getSqlMapGeneratorConfiguration().setTargetPackage(generatorCodeProperties.getMapperXmlPackageName());
+        }
     }
 
     /**

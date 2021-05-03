@@ -8,6 +8,7 @@ import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.Interface;
 import org.mybatis.generator.api.dom.java.Method;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
+import org.mybatis.generator.config.Context;
 
 import java.util.List;
 import java.util.Map;
@@ -45,6 +46,12 @@ public class TkMybatisPlugin extends tk.mybatis.mapper.generator.MapperPlugin {
         generatorCommonMethod.renameMapperIfNecessary(introspectedTable);
         // xml是否有必要重命名
         generatorCommonMethod.renameXmlIfNecessary(introspectedTable);
+    }
+
+    @Override
+    public void setContext(Context context) {
+        generatorCommonMethod.setContextIfNecessary(context);
+        super.setContext(context);
     }
 
     @Override

@@ -29,17 +29,17 @@ generator.code.outputDir=/Users/caojx/Desktop/mybatis-generator-plus/src/main/ja
 generator.code.likeTable=%
 
 # 实体
-generator.code.entityPackageName=com.generator.test.entity
-generator.code.entityLombokModel=true
+#generator.code.entityPackageName=com.generator.test.entity
+#generator.code.entityLombokModel=true
 #generator.code.entityNameFormat=%sEntity
 
 # mapper
-generator.code.mapperPackageName=com.generator.test.mapper
+#generator.code.mapperPackageName=com.generator.test.mapper
 #generator.code.superMapperClass=caojx.learn.mybatisgeneratorplus.generator.mybatis.TkBaseMapper
 #generator.code.mapperNameFormat=%sDao
 
 # mapper.xml
-generator.code.mapperXmlPackageName=com.generator.test.mapper.xml
+#generator.code.mapperXmlPackageName=com.generator.test.mapper.xml
 #generator.code.xmlNameFormat=%sDao
 
 # service
@@ -53,7 +53,7 @@ generator.code.serviceImplPackageName=com.generator.test.service.impl
 #generator.code.serviceImplNameFormat=%sServiceImpl
 
 # controller
-generator.code.controllerPackageName=com.generator.test.controller
+#generator.code.controllerPackageName=com.generator.test.controller
 #generator.code.controllerNameFormat=%sController
 
 # 日志配置

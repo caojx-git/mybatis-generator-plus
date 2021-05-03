@@ -28,7 +28,7 @@ generator.code.type=MyBatis
 generator.code.author=caojx
 generator.code.outputDir=/Users/caojx/Desktop/mybatis-generator-plus/src/main/java
 generator.code.likeTable=%
-#generator.code.swagger2=false
+generator.code.swagger2=false
 
 # 实体
 #generator.code.entityPackageName=com.generator.test.entity
@@ -114,7 +114,7 @@ generator.code.entityLombokModel=true
 # 实体名格式，不配置默认为 %s
 generator.code.entityNameFormat=%sEntity
 # 实体支持Swagger2风格，默认false
-#generator.code.swagger2=true
+generator.code.swagger2=true
 ```
 
 ## 2.6 mapper生成规则配置

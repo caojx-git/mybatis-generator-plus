@@ -7,7 +7,7 @@
 - 1.生成代码入口：MybatisGeneratorPlusApplication
 - 2.支持MyBatis、TkMyBatis、MyBatisPlus 三中风格代码生成
 - 3.实体支持Lombok风格
-  4.实体支持Swagger2风格，默认false
+- 4.实体支持Swagger2风格，默认false
 - 5.MyBatis、TkMyBatis、MyBatisPlus 支持生成Entity、Mapper、Xml、Service、ServiceImpl、Controller
 - 6.Entity、Mapper、Xml、Service、ServiceImpl、Controller可以使用自定义命名格式、自定义生成目录
 

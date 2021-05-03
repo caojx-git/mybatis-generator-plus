@@ -66,6 +66,7 @@ public class SimpleFreemarkerTemplateEngine {
         objectMap.put("package", getPackageInfo());
 
         objectMap.put("author", GENERATOR_CODE_PROPERTIES.getAuthor());
+        objectMap.put("swagger2", GENERATOR_CODE_PROPERTIES.isSwagger2());
         objectMap.put("date", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         objectMap.put("time", new SimpleDateFormat("h:mm a").format(new Date()));
 

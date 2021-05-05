@@ -34,6 +34,8 @@ public class MyBatisPlusCodeGenerator implements CodeGenerator {
         mpg.setStrategy(generatorConfig.getStrategyConfig());
         // 模板引擎
         mpg.setTemplateEngine(new SimpleFreemarkerTemplateEngine());
+        // 模板配置
+        mpg.setTemplate(generatorConfig.getTemplateConfig());
 
         mpg.execute();
         log.info("--------------------start MyBatisPlusCodeGenerator-------------------");

@@ -4,10 +4,7 @@ package caojx.learn.mybatisgeneratorplus.generator.mybatisplus.config;
 import caojx.learn.mybatisgeneratorplus.common.properties.GeneratorCodeProperties;
 import caojx.learn.mybatisgeneratorplus.generator.mybatisplus.converts.SimpleMysqlTypeConvert;
 import com.baomidou.mybatisplus.annotation.DbType;
-import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
-import com.baomidou.mybatisplus.generator.config.PackageConfig;
-import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.LikeTable;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
@@ -102,6 +99,23 @@ public class MyBatisPlusGeneratorConfig {
         globalConfig.setSwagger2(generatorCodeProperties.isSwagger2());
 
         return globalConfig;
+    }
+
+    /**
+     * 模板配置
+     *
+     * @return
+     */
+    @Bean
+    public TemplateConfig getTemplateConfig() {
+        TemplateConfig templateConfig = new TemplateConfig();
+        templateConfig.setController("/templates/mybatisplus/controller.java");
+        templateConfig.setService("/templates/mybatisplus/service.java");
+        templateConfig.setServiceImpl("/templates/mybatisplus/serviceImpl.java");
+        templateConfig.setEntity("/templates/mybatisplus/entity.java");
+        templateConfig.setMapper("/templates/mybatisplus/mapper.java");
+        templateConfig.setXml("/templates/mybatisplus/mapper.xml");
+        return templateConfig;
     }
 
     /**

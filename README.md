@@ -28,7 +28,7 @@ generator.code.type=MyBatis
 generator.code.author=caojx
 generator.code.outputDir=/Users/caojx/Desktop/mybatis-generator-plus/src/main/java
 generator.code.likeTable=%
-generator.code.swagger2=false
+#generator.code.swagger2=false
 
 # 实体
 #generator.code.entityPackageName=com.generator.test.entity
@@ -45,12 +45,12 @@ generator.code.swagger2=false
 #generator.code.xmlNameFormat=%sDao
 
 # service
-generator.code.servicePackageName=com.generator.test.service
+#generator.code.servicePackageName=com.generator.test.service
 #generator.code.superServiceClass=caojx.learn.mybatisgeneratorplus.generator.mybatis.IService
 #generator.code.serviceNameFormat=%sService
 
 # serviceImpl
-generator.code.serviceImplPackageName=com.generator.test.service.impl
+#generator.code.serviceImplPackageName=com.generator.test.service.impl
 #generator.code.superServiceImplClass=caojx.learn.mybatisgeneratorplus.generator.mybatis.ServiceImpl
 #generator.code.serviceImplNameFormat=%sServiceImpl
 

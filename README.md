@@ -5,7 +5,7 @@
 **特点：**
 
 - 1.生成代码入口：MybatisGeneratorPlusApplication
-- 2.支持MyBatis、TkMyBatis、MyBatisPlus 三中风格代码生成
+- 2.支持MyBatis、TkMyBatis、MyBatisPlus 三种风格代码生成
 - 3.实体支持Lombok风格，默认true
 - 4.实体支持Swagger2风格，默认false
 - 5.MyBatis、TkMyBatis、MyBatisPlus 支持生成Entity、Mapper、Xml、Service、ServiceImpl、Controller

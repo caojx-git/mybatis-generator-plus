@@ -72,19 +72,19 @@ generator.code.author=caojx
 
 ## 2.2 生成不同风格的代码
 
-生成普通MyBatis风格代码
+生成MyBatis风格代码
 
 ```properties
 generator.code.type=MyBatis
 ```
 
-生成普通TkMyBatis风格代码
+生成TkMyBatis风格代码
 
 ```properties
 generator.code.type=TkMyBatis
 ```
 
-生成普通MyBatisPlu风格代码
+生成MyBatisPlu风格代码
 
 ```properties
 generator.code.type=MyBatisPlus
